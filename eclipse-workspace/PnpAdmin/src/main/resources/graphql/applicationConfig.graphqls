@@ -1,0 +1,35 @@
+type ConfigurationManager {
+id: ID!,
+group: String,
+key: String,
+value: String,
+}
+
+type OtpStore{
+mobileNumber:String!,
+otp:Int!,
+}
+
+
+type Response{
+message:String,
+status:String,
+error:String,
+
+}
+
+
+type Query {
+	getConfiguartion:[ConfigurationManager]
+	getConfigurationByGroup(group: String!):[ConfigurationManager]
+}
+
+
+ type Mutation {
+	createConfiguration(group: String!, key: String!, value: String):Response!
+	updateConfiguration(id: ID!, group: String, key: String, value: String):Response!
+	deleteConfiguration(id: ID!):Response!
+	generateOtp(mobileNumber:String!):Response!
+}
+
+
